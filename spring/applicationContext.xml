@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"  
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  
+    xmlns:p="http://www.springframework.org/schema/p"  
+    xsi:schemaLocation="http://www.springframework.org/schema/beans  
+    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+<bean id="studentbean" class="com.basic.Student">
+<property name="name" value="Vidula"></property>
+</bean>
+
+<bean id="employeebean"  class="com.CI_basic.Employee">
+<constructor-arg value="101" type="int"></constructor-arg>
+<constructor-arg value="Vidula"></constructor-arg>
+</bean>
+
+<bean id="addressbean" class="com.CI_basic.Address">
+<constructor-arg value="Pune"></constructor-arg>
+<constructor-arg value="Maharashtra"></constructor-arg>
+<constructor-arg value="India"></constructor-arg>
+</bean>
+
+<bean  id="teacherbean" class="com.CI_basic.Teacher">
+<constructor-arg value="111"></constructor-arg>
+<constructor-arg value="Vidula"></constructor-arg>
+<constructor-arg>
+<ref bean="addressbean"/>
+</constructor-arg>
+</bean>
+
+<bean  id="questionbean" class="com.CI_collection.Question">
+
+<constructor-arg value="1"></constructor-arg>
+<constructor-arg value="What is java?"></constructor-arg>
+<constructor-arg>
+<list>
+<value>Java is a programming language</value>
+<value>Java is a simple language</value>
+<value>Java is a object oriented</value>
+</list>
+</constructor-arg>
+</bean>
+
+<bean id="ans1" class="com.CI_collection.Answer"> 
+<constructor-arg value="1"></constructor-arg>
+<constructor-arg value="Spring is framework"></constructor-arg>
+<constructor-arg value ="Vidula"></constructor-arg>
+</bean>
+<bean id="ans2" class="com.CI_collection.Answer"> 
+<constructor-arg value="2"></constructor-arg>
+<constructor-arg value="Spring is easily intergrate with other framework"></constructor-arg>
+<constructor-arg value ="Ram"></constructor-arg>
+</bean>
+<bean id="que_bean"  class="com.CI_collection.Que">
+<constructor-arg value="111"></constructor-arg>
+<constructor-arg value="what is spring?"></constructor-arg>
+<constructor-arg>
+<list>
+<ref  bean="ans1"/>
+<ref bean="ans2"/>
+</list>
+</constructor-arg>
+</bean>
+
+<bean id="college_bean" class="com.CI_map.College">
+<constructor-arg value="1001"></constructor-arg>
+<constructor-arg value="COE"></constructor-arg>
+<constructor-arg>
+<map>
+<entry  key="Science" value="BSC"></entry>
+<entry  key="Commerce" value="B.com"></entry>
+<entry  key="Arts" value="BA"></entry>
+</map>
+</constructor-arg>
+</bean>
+
+<!-- Dependency injection by Setter  -->
+<bean id="emp_bean" class="com.SI_basic.Employee">
+<property name="id" >
+<value>101</value>
+</property>
+<property name="name" >
+<value>Vidula</value>
+</property>
+<property name="email" >
+<value>vidula@gmail.com</value>
+</property>
+<property name="city" >
+<value>pune</value>
+</property>
+</bean>
+
+<bean id ="productbean" class="com.SI_basic.Product">
+<property name="id">
+<value>1</value>
+</property>
+<property name="name">
+<value>Laptop</value>
+</property>
+<property name="price">
+<value>35000</value>
+</property>
+</bean>
+<bean  id="customerbean" class="com.SI_basic.Costumer">
+<property name="id" value="101"></property>
+<property name="name" value="Vidula"></property>
+<property name="product" ref="productbean"></property>
+</bean>
+
+<bean id="q1" class="com.SI_collection.Question">
+
+<property name="id" value="1"></property>
+<property name="que" value="what is java?"></property>
+<property name="answer">
+<list>
+<value>Java is a programming language</value>
+<value>Java is a simple language</value>
+<value>Java is a object oriented</value>
+</list>
+</property>
+</bean>
+
+<bean id="a1" class="com.SI_collection.Answer"> 
+<property name="id" value="1"></property>
+<property name="ans" value="java is progrmming lang"></property>
+<property name="postedby" value="reena"></property>
+</bean>
+<bean id="a2" class="com.SI_collection.Answer"> 
+<property name="id" value="2"></property>
+<property name="ans" value="java is oop lang"></property>
+<property name="postedby" value="sham"></property>
+</bean>
+<bean id="q11" class="com.SI_collection.Que"> 
+<property name="id" value="111"></property>
+<property name="que" value="what is java?"></property>
+<property name="ans" >
+<list>
+<ref bean="a1"/>
+<ref bean="a2"/>
+</list>
+</property>
+</bean>
+
+<bean  id="que_map" class="com.SI_map.Question">
+<property name="id" value="1"></property>
+<property name="que" value="what is java?"></property>
+<property name="ans">
+<map>
+<entry key="java is progrmming lang" value="Vidula"></entry>
+<entry key="java is oops lang" value="Ram"></entry>
+</map>
+</property>
+
+
+</bean>
+</beans>
